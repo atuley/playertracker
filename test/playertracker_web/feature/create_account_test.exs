@@ -14,8 +14,7 @@ defmodule PlayerTrackerWeb.CreateAccountTest do
     fill_field({:class, "qa-email"}, "alex@example.com")
     fill_field({:class, "qa-password"}, "password")
     submit_element({:class, "qa-submit"})
-    message = inner_text({:class, "alert-info"})
-    assert message == "User created successfully."
+    assert inner_text({:class, "alert-info"}) == "User created successfully."
   end
 
 end
