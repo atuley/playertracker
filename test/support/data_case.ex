@@ -22,6 +22,7 @@ defmodule Playertracker.DataCase do
       import Ecto.Changeset
       import Ecto.Query
       import Playertracker.DataCase
+      import Playertracker.Factory
     end
   end
 

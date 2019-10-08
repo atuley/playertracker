@@ -4,7 +4,7 @@ defmodule Playertracker.Accounts.User do
 
   schema "users" do
     field :email, :string
-    field :password, :string
+    field :password, :string, virtual: true
     field :password_hash, :string
 
     timestamps()
@@ -13,7 +13,15 @@ defmodule Playertracker.Accounts.User do
   @doc false
   def changeset(user, attrs) do
     user
-    |> cast(attrs, [:email, :password, :password_hash])
+    |> cast(attrs, [:email, :password])
     |> validate_required([:email, :password])
+    |> unique_constraint(:email)
+    |> put_pass_hash()
   end
+
+  defp put_pass_hash(%Ecto.Changeset{valid?: true, changes: %{password: password}} = changeset) do
+    changeset
+    |> change(Comeonin.Bcrypt.add_hash(password))
+  end
+  defp put_pass_hash(changeset), do: changeset
 end

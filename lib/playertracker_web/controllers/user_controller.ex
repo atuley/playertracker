@@ -11,7 +11,7 @@ defmodule PlayertrackerWeb.UserController do
 
   def create(conn, %{"user" => user_params}) do
     case Accounts.create_user(user_params) do
-      {:ok, user} ->
+      {:ok, _} ->
         conn
         |> put_flash(:info, "User created successfully.")
         |> redirect(to: Routes.page_path(conn, :index))
