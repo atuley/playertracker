@@ -13,11 +13,20 @@ defmodule PlayertrackerWeb.Router do
     plug :accepts, ["json"]
   end
 
+  pipeline :authenticated do
+    plug(Playertracker.Guardian.AuthPipeline)
+  end
+
   scope "/", PlayertrackerWeb do
     pipe_through :browser
 
-    get "/", PageController, :index
+    get "/sessions/new", SessionController, :new
+    post "/sessions", SessionController, :create
     resources "/users", UserController
+
+    pipe_through(:authenticated)
+
+    get "/", PageController, :index
   end
 
   # Other scopes may use custom stacks.

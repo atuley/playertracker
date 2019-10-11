@@ -101,4 +101,17 @@ defmodule Playertracker.Accounts do
   def change_user(%User{} = user) do
     User.changeset(user, %{})
   end
+
+  def verify_login(%{"email" => email, "password" => password}) do
+    case Repo.get_by(User, email: String.downcase(email)) do
+      nil ->
+        {:error, "Invalid email or password!"}
+
+      user ->
+        case Comeonin.Bcrypt.check_pass(user, password) do
+          {:ok, user} -> {:ok, user}
+          {:error, _} -> {:error, "Invalid email or password!"}
+        end
+    end
+  end
 end
