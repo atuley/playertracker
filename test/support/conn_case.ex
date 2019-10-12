@@ -20,6 +20,7 @@ defmodule PlayertrackerWeb.ConnCase do
       # Import conveniences for testing with connections
       use Phoenix.ConnTest
       alias PlayertrackerWeb.Router.Helpers, as: Routes
+      import Playertracker.Factory
 
       # The default endpoint for testing
       @endpoint PlayertrackerWeb.Endpoint

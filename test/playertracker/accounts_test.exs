@@ -52,5 +52,12 @@ defmodule Playertracker.AccountsTest do
     test "change_user/1 returns a user changeset", %{user: user} do
       assert %Ecto.Changeset{} = Accounts.change_user(user)
     end
+
+    test "verify_login/1 with valid data verifies a user's credentials", %{user: user} do
+      assert {:ok, user} =
+               Accounts.verify_login(%{"email" => user.email, "password" => "password"})
+
+      assert %User{} = user
+    end
   end
 end
