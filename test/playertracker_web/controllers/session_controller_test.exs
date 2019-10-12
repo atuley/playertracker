@@ -24,4 +24,11 @@ defmodule PlayertrackerWeb.SessionControllerTest do
 
     assert html_response(response, 401) =~ "Invalid email or password!"
   end
+
+  test "logging out", %{conn: conn, user: user} do
+    post(conn, "/sessions", %{email: user.email, password: "password"})
+    response = get(conn, "/logout", %{user: user})
+
+    assert html_response(response, 302) =~ "/"
+  end
 end

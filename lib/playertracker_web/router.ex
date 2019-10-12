@@ -14,18 +14,18 @@ defmodule PlayertrackerWeb.Router do
   end
 
   pipeline :authenticated do
-    plug(Playertracker.Guardian.AuthPipeline)
+    plug Playertracker.Guardian.AuthPipeline
+    plug PlayertrackerWeb.Plugs.CurrentUser
   end
 
   scope "/", PlayertrackerWeb do
     pipe_through :browser
+    pipe_through :authenticated
 
     get "/sessions/new", SessionController, :new
     post "/sessions", SessionController, :create
+    get "/logout", SessionController, :logout
     resources "/users", UserController
-
-    pipe_through(:authenticated)
-
     get "/", PageController, :index
   end
 

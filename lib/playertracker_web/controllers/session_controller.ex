@@ -24,4 +24,12 @@ defmodule PlayertrackerWeb.SessionController do
         |> render("new.html")
     end
   end
+
+  def logout(conn, _) do
+    conn
+    |> Guardian.Plug.sign_out()
+    |> put_flash(:info, "Logout successful!")
+    |> put_status(302)
+    |> redirect(to: "/")
+  end 
 end

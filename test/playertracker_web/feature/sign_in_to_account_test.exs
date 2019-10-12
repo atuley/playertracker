@@ -30,4 +30,16 @@ defmodule PlayertrackerWeb.SignInToAccountTest do
     refute current_path() == "/"
     assert String.contains?(page_source(), "Invalid email or password!")
   end
+
+  test "can log out", %{user: user} do
+    navigate_to("/")
+    click({:css, ".qa-sign-in"})
+    fill_field({:css, ".qa-session-email"}, user.email)
+    fill_field({:css, ".qa-session-password"}, "password")
+    click({:css, ".qa-session-submit"})
+
+    assert current_path() == "/"
+    click({:css, ".qa-log-out"})
+    assert String.contains?(page_source(), "Logout successful!")
+  end
 end
