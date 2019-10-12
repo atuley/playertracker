@@ -1,13 +1,7 @@
 defmodule PlayerTrackerWeb.CreateAccountTest do
-  use ExUnit.Case, async: true
-  use Hound.Helpers
+  use Playertracker.FeatureCase
 
   hound_session()
-
-  setup do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Playertracker.Repo)
-    Ecto.Adapters.SQL.Sandbox.mode(Playertracker.Repo, {:shared, self()})
-  end
 
   test "Create an account" do
     navigate_to("/users/new")
