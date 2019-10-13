@@ -25,7 +25,7 @@ defmodule PlayertrackerWeb.UserControllerTest do
       assert redirected_to(conn) == Routes.page_path(conn, :index)
 
       conn = get(conn, Routes.page_path(conn, :index))
-      assert html_response(conn, 200) =~ "Welcome to Phoenix!"
+      assert html_response(conn, 200) =~ "User created successfully."
     end
 
     test "renders errors when data is invalid", %{conn: conn} do
