@@ -47,7 +47,8 @@ defmodule Playertracker.MixProject do
       {:ex_machina, "~> 2.3"},
       {:bcrypt_elixir, "~> 1.1.1"},
       {:comeonin, "~> 4.1"},
-      {:guardian, "~> 2.0"}
+      {:guardian, "~> 2.0"},
+      {:httpoison, "~> 1.5"}
     ]
   end
 

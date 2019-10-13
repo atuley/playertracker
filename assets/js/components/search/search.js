@@ -6,7 +6,7 @@ const Search = ({ handlePlayerSearch, fetchStats, searchResults }) => {
     <div className="search">
       <input
         placeholder="Search"
-        className={`search__field ${searchResults.length &&
+        className={`search__field qa-search ${searchResults.length &&
           'u-display-results'}`}
         onChange={handlePlayerSearch}
       />
