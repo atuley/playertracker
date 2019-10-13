@@ -2,7 +2,8 @@
   "repository": {},
   "license": "MIT",
   "scripts": {
-    "watch": "parcel watch --no-hmr css/app.scss js/app.js --out-dir ../priv/static/"
+    "deploy": "parcel build ./js/app.js --out-dir priv/static/js",
+    "watch": "parcel watch ./js/app.js --out-dir priv/static/js"
   },
   "dependencies": {
     "@babel/core": "^7.0.0",
@@ -15,7 +16,8 @@
     "react-dom": "^16.8.6",
     "react-redux": "^7.0.2",
     "redux": "^4.0.1",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "parcel-bundler": "^1.10.3"
   },
   "devDependencies": {
     "sass": "^1.23.0"

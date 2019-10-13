@@ -19,8 +19,16 @@ config :playertracker, PlayertrackerWeb.Endpoint,
   http: [port: 4000],
   debug_errors: true,
   code_reloader: true,
-  check_origin: false
-
+  check_origin: false,
+  watchers: [
+    node: [
+      "./assets/node_modules/parcel-bundler/bin/cli.js",
+      "watch",
+      "./assets/js/app.js",
+      "--out-dir",
+      "priv/static/js"
+    ]
+  ]
 # ## SSL Support
 #
 # In order to use HTTPS in development, a self-signed
