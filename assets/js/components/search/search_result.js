@@ -4,7 +4,7 @@ import NameBadge from '../player/name_badge'
 
 const SearchResult = ({ player, fetchStats }) => (
   <tr
-    className="search-result"
+    className={`search-result qa-result-${player.id}`}
     style={{
       backgroundColor: hex2rgba(player.teamColor, 0.3)
     }}

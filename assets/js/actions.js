@@ -1,6 +1,6 @@
 export const fetchPlayers = () => dispatch => {
   dispatch({ type: 'FETCH_PLAYERS_REQUEST' })
-  fetch('http://localhost:4000/api/players')
+  fetch('/api/players')
     .then(response => response.json())
     .then(players =>
       dispatch({
@@ -14,7 +14,7 @@ export const fetchPlayers = () => dispatch => {
 }
 export const fetchStats = ids => dispatch => {
   dispatch({ type: 'FETCH_STATS_REQUEST' })
-  fetch('http://localhost:4000/api/details', {
+  fetch('/api/details', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ ids })

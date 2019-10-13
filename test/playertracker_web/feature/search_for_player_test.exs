@@ -5,9 +5,9 @@ defmodule PlayerTrackerWeb.SearchForPlayerTest do
 
   test "Search for a player" do
     navigate_to("/")
-    :timer.sleep(3000)
+    :timer.sleep(5000)
     fill_field({:class, "qa-search"}, "ste")
     
-    assert inner_text({:class, "qa-result-201939"}) == "Stephen Curry"
+    assert inner_text({:class, "qa-result-201939"}) =~ "Stephen Curry"
   end
 end
