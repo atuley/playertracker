@@ -1,0 +1,173 @@
+/* VARIABLES */
+$primary-grey: #2d2d2d;
+$secondary-grey: #e0e0e0;
+$primary-blue: #3375b1;
+$secondary-blue: #245582;
+
+/* ELEMENTS */
+body {
+  background-color: $primary-grey;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+}
+
+input {
+  border-width: inherit;
+  padding: 0;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+table {
+  border-spacing: 0;
+}
+
+/* BLOCKS */
+.search {
+  margin: auto;
+  max-width: 1000px;
+
+  &__field {
+    border-radius: 10px;
+    height: 40px;
+    padding-left: 20px;
+    width: 100%;
+  }
+
+  &__results {
+    width: 100%;
+
+    tr:last-child {
+      td:first-of-type {
+        border-bottom-left-radius: 10px;
+      }
+      td:last-of-type {
+        border-bottom-right-radius: 10px;
+      }
+    }
+  }
+}
+
+.search-result {
+  color: white;
+  height: 50px;
+
+  td {
+    padding: 10px;
+  }
+
+  &__follow-btn {
+    align-items: center;
+    display: flex;
+    height: 50px;
+    justify-content: flex-end;
+    min-height: 50px;
+  }
+
+  &__player-image-wrapper {
+    width: 40px;
+  }
+
+  &__player-image {
+    border-radius: 50%;
+    height: 50px;
+  }
+
+  &__pos {
+    color: $secondary-grey;
+    font-size: 14px;
+    font-weight: 300;
+    margin-top: 2px;
+  }
+
+  &__team-logo {
+    height: 40px;
+  }
+}
+
+.player-card {
+  border-radius: 10px;
+  box-sizing: initial;
+  margin: 10px auto auto auto;
+  padding: 10px;
+
+  &__image-wrapper {
+    display: inline-block;
+  }
+
+  &__image {
+    border-radius: 50%;
+    height: 100px;
+  }
+  &__stats {
+    color: white;
+    display: inline-block;
+  }
+}
+
+.stats {
+  &__abrv {
+    font-weight: 100;
+    margin-left: 2px;
+  }
+  &__primary {
+    font-size: 3em;
+    font-weight: 400;
+    margin-left: 8px;
+  }
+  &__secondary {
+    font-size: 1.5em;
+    font-weight: 400;
+    margin-left: 8px;
+  }
+}
+
+.following-container {
+  max-width: 2000px;
+}
+
+.name-badge {
+  display: flex;
+}
+
+.primary-btn {
+  background-color: $primary-blue;
+  border: none;
+  border-radius: 100px;
+  color: white;
+  font-size: 14px;
+  font-weight: 200;
+  height: 32px;
+  min-width: 75px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+/* UTILS */
+.u-border {
+  &-left {
+    border-left: 1px solid black;
+  }
+  &-right {
+    border-right: 1px solid black;
+  }
+}
+
+.u-block {
+  display: block;
+}
+
+.u-flex {
+  display: flex;
+}
+
+.u-ml-8 {
+  margin-left: 8px;
+}
+
+.u-display-results {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}

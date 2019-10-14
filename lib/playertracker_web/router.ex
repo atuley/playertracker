@@ -29,8 +29,8 @@ defmodule PlayertrackerWeb.Router do
     get "/", PageController, :index
   end
 
-  # Other scopes may use custom stacks.
-  # scope "/api", PlayertrackerWeb do
-  #   pipe_through :api
-  # end
+  scope "/api", PlayertrackerWeb do
+    pipe_through :api
+    get "/players", PlayerController, :players
+  end
 end
