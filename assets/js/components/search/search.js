@@ -1,5 +1,5 @@
-import React from "react";
-import SearchResult from "./search_result";
+import React from 'react'
+import SearchResult from './search_result'
 
 const Search = ({ handlePlayerSearch, fetchStats, searchResults }) => {
   return (
@@ -7,7 +7,7 @@ const Search = ({ handlePlayerSearch, fetchStats, searchResults }) => {
       <input
         placeholder="Search"
         className={`search__field qa-search ${searchResults.length &&
-          "u-display-results"}`}
+          'u-display-results'}`}
         onChange={handlePlayerSearch}
       />
       <table className="search__results" cellPadding="0" cellSpacing="0">
@@ -22,7 +22,7 @@ const Search = ({ handlePlayerSearch, fetchStats, searchResults }) => {
         </tbody>
       </table>
     </div>
-  );
-};
+  )
+}
 
-export default Search;
+export default Search
