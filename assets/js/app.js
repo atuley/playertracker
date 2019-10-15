@@ -33,7 +33,7 @@ const store = createStore(
 render(
   <Provider store={store}>
     <SearchContainer />
-    <FollowingContainer />
+    {/* <FollowingContainer /> */}
   </Provider>,
   document.getElementById("root")
 );
