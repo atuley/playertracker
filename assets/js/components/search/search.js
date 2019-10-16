@@ -1,7 +1,7 @@
 import React from 'react'
 import SearchResult from './search_result'
 
-const Search = ({ handlePlayerSearch, fetchStats, searchResults }) => {
+const Search = ({ handlePlayerSearch, searchResults }) => {
   return (
     <div className="search">
       <input
@@ -13,11 +13,7 @@ const Search = ({ handlePlayerSearch, fetchStats, searchResults }) => {
       <table className="search__results" cellPadding="0" cellSpacing="0">
         <tbody>
           {searchResults.map(player => (
-            <SearchResult
-              key={player.id}
-              player={player}
-              fetchStats={fetchStats}
-            />
+            <SearchResult key={player.id} player={player} />
           ))}
         </tbody>
       </table>
