@@ -1,4 +1,22 @@
 defmodule Playertracker.Player do
+  use Ecto.Schema
+  import Ecto.Changeset
+
+  schema "players" do
+    field :first_name, :string
+    field :last_name, :string
+    field :player_id, :string
+
+    timestamps()
+  end
+
+  @doc false
+  def changeset(player, attrs) do
+    player
+    |> cast(attrs, [:player_id, :first_name, :last_name])
+    |> validate_required([:player_id, :first_name, :last_name])
+  end
+
   def all() do
     fetch_all_players()
     |> filter_out_non_franchise_players()
