@@ -6,6 +6,8 @@ defmodule Playertracker.Player do
     field :first_name, :string
     field :last_name, :string
     field :player_id, :string
+    has_many(:passive_relationships, Playertracker.Accounts.Relationship, foreign_key: :followed_id)
+    has_many(:followers, through: [:passive_relationships, :follower])
 
     timestamps()
   end

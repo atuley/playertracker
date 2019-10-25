@@ -27,6 +27,7 @@ defmodule PlayertrackerWeb.Router do
     get "/logout", SessionController, :logout
     resources "/users", UserController
     get "/", PageController, :index
+    post "/follow", RelationshipController, :follow
   end
 
   scope "/api", PlayertrackerWeb do
