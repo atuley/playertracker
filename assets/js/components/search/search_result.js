@@ -1,8 +1,8 @@
-import React from 'react'
-import { getPlayerImage, hex2rgba } from '../../utils'
-import NameBadge from '../player/name_badge'
+import React from "react";
+import { getPlayerImage, hex2rgba } from "../../utils";
+import NameBadge from "../player/name_badge";
 
-const SearchResult = ({ player }) => (
+const SearchResult = ({ player, fetchStats }) => (
   <tr
     className={`search-result qa-result-${player.id}`}
     style={{
@@ -19,9 +19,16 @@ const SearchResult = ({ player }) => (
       <NameBadge {...player} />
     </td>
     <td className="search-result__follow-btn">
-      <button className={`primary-btn qa-follow-${player.id}`}>Follow</button>
+      <button
+        className={`primary-btn qa-follow-${player.id}`}
+        onClick={() => {
+          fetchStats([player.id]);
+        }}
+      >
+        Follow
+      </button>
     </td>
   </tr>
-)
+);
 
-export default SearchResult
+export default SearchResult;

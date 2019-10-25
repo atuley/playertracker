@@ -1,25 +1,25 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import Search from './search'
-import { fetchPlayers } from '../../actions'
-import { search } from '../../utils'
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import Search from "./search";
+import { fetchPlayers, fetchStats } from "../../actions";
+import { search } from "../../utils";
 
 class SearchContainer extends Component {
   state = {
     searchResults: []
-  }
+  };
 
   componentDidMount = () => {
-    this.props.fetchPlayers()
-  }
+    this.props.fetchPlayers();
+  };
 
   handlePlayerSearch = e => {
-    const { players } = this.props
+    const { players } = this.props;
     this.setState({
       ...this.state,
       searchResults: search(e.target.value, players)
-    })
-  }
+    });
+  };
 
   render() {
     return (
@@ -28,15 +28,15 @@ class SearchContainer extends Component {
         handlePlayerSearch={this.handlePlayerSearch}
         searchResults={this.state.searchResults}
       />
-    )
+    );
   }
 }
 
 const mapStateToProps = state => ({
   players: state.rootReducer.players
-})
+});
 
 export default connect(
   mapStateToProps,
-  { fetchPlayers }
-)(SearchContainer)
+  { fetchPlayers, fetchStats }
+)(SearchContainer);
