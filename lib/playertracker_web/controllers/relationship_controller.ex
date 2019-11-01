@@ -1,14 +1,11 @@
 defmodule PlayertrackerWeb.RelationshipController do
   use PlayertrackerWeb, :controller
-
-  alias Playertracker.Accounts
-  alias Playertracker.Accounts.User
-  alias Playertracker.Player
-  alias Playertracker.Repo
+  alias Playertracker.{Accounts, Player, Repo}
 
   def follow(conn, %{"id" => id}) do
-    player = Repo.all(Player) |> List.first()
-    Accounts.follow(player, conn.assigns.current_user)
+    player = Repo.get_by!(Player, player_id: id)
+    current_user = conn.assigns.current_user
+    Accounts.follow(player, current_user)
 
     conn
     |> put_flash(:info, "User followed.")

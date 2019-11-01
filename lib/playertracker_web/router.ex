@@ -11,6 +11,8 @@ defmodule PlayertrackerWeb.Router do
 
   pipeline :api do
     plug :accepts, ["json"]
+    plug :fetch_session
+    plug :fetch_flash
   end
 
   pipeline :authenticated do
@@ -27,11 +29,12 @@ defmodule PlayertrackerWeb.Router do
     get "/logout", SessionController, :logout
     resources "/users", UserController
     get "/", PageController, :index
-    post "/follow", RelationshipController, :follow
   end
 
   scope "/api", PlayertrackerWeb do
     pipe_through :api
+    pipe_through :authenticated
     get "/players", PlayerController, :players
+    post "/follow", RelationshipController, :follow
   end
 end
