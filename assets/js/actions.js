@@ -18,15 +18,7 @@ export const fetchStats = id => dispatch => {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ id })
+  }).catch(() => {
+    dispatch({ type: 'FETCH_STATS_ERROR' })
   })
-    .then(response => response.json())
-    .then(details => {
-      dispatch({
-        type: 'FETCH_STATS_OK',
-        payload: details
-      })
-    })
-    .catch(() => {
-      dispatch({ type: 'FETCH_STATS_ERROR' })
-    })
 }
