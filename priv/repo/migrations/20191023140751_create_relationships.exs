@@ -4,7 +4,7 @@ defmodule Playertracker.Repo.Migrations.CreateRelationships do
   def change do
     create table(:relationships) do
       add :follower_id, references(:users, on_delete: :nothing)
-      add :followed_id, references(:users, on_delete: :nothing)
+      add :followed_id, references(:players, on_delete: :nothing)
 
       timestamps()
     end

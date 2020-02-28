@@ -15,4 +15,12 @@ defmodule Playertracker.Factory do
     }
     |> set_password
   end
+
+  def player_factory() do
+    %Playertracker.Player{
+      first_name: "Kobe",
+      last_name: "Bryant",
+      player_id: "12345"
+    }
+  end
 end

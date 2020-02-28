@@ -120,4 +120,14 @@ defmodule Playertracker.Accounts do
     |> Relationship.changeset(%{follower_id: user.id, followed_id: player.id})
     |> Repo.insert()
   end
+
+  def unfollow(player, user) do
+    Repo.get_by!(Relationship, follower_id: user.id, followed_id: player.id)
+    |> Repo.delete()
+  end
+
+  # def following(user) do
+  #   list = user |> Playertracker.Repo.preload(:following)
+  #   list.following
+  # end
 end

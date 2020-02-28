@@ -3,7 +3,7 @@ defmodule Playertracker.AccountsTest do
   alias Playertracker.Accounts
 
   describe "users" do
-    alias Playertracker.Accounts.User
+    alias Playertracker.Accounts.{Relationship, User}
 
     @valid_attrs %{email: "some email", password: "some password"}
     @update_attrs %{email: "some updated email", password: "some updated password"}
@@ -58,6 +58,29 @@ defmodule Playertracker.AccountsTest do
                Accounts.verify_login(%{"email" => user.email, "password" => "password"})
 
       assert %User{} = user
+    end
+
+    test "follow/2 with valid params creates relationship ", %{user: user} do
+      player = insert(:player)
+
+      assert {:ok, %Relationship{} = relationship} = Accounts.follow(player, user)
+      assert Repo.get!(Relationship, relationship.id) == relationship
+    end
+
+    test "follow/2 with invalid params returns error changeset", %{user: user} do
+      # no results error?
+      assert {:error, %Ecto.Changeset{}} = Accounts.follow(%{id: 20}, user)
+    end
+
+    test "unfollow/2 with valid params deletes relationship ", %{user: user} do
+      player = insert(:player)
+      assert {:ok, %Relationship{} = relationship} = Accounts.follow(player, user)
+      assert {:ok, %Relationship{} = relationship} = Accounts.unfollow(player, user)
+      assert_raise Ecto.NoResultsError, fn -> Accounts.unfollow(player, user) end
+    end
+
+    test "unfollow/2 with invalid raises no results error", %{user: user} do
+      assert_raise Ecto.NoResultsError, fn -> Accounts.unfollow(%{id: 20}, user) end
     end
   end
 end
