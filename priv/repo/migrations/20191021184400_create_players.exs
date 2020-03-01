@@ -6,6 +6,11 @@ defmodule Playertracker.Repo.Migrations.CreatePlayers do
       add :player_id, :string
       add :first_name, :string
       add :last_name, :string
+      add :number, :string
+      add :position, :string
+      add :team_color, :string
+      add :team_id, :string
+      add :tricode, :string
 
       timestamps()
     end

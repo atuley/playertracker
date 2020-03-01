@@ -13,10 +13,19 @@
 alias Playertracker.{Repo, Player}
 
 IO.puts "Seeding players..."
-raw_players = Player.all()
+raw_players = Player.all_seed()
 
 Enum.each(raw_players, fn player -> 
-  %Player{first_name: player.firstName, last_name: player.lastName, player_id: player.id}
+  %Player{
+    first_name: player.firstName,
+    last_name: player.lastName,
+    player_id: player.id,
+    number: player.number,
+    position: player.position,
+    team_color: player.teamColor,
+    team_id: player.teamId,
+    tricode: player.tricode
+  }
   |> Repo.insert!()
 end)
 
