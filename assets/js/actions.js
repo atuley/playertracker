@@ -12,13 +12,18 @@ export const fetchPlayers = () => dispatch => {
       dispatch({ type: 'FETCH_PLAYERS_ERROR' })
     })
 }
-export const fetchStats = id => dispatch => {
-  dispatch({ type: 'FETCH_STATS_REQUEST' })
+export const followPlayer = id => dispatch => {
+  dispatch({ type: 'FOLLOW_PLAYER_REQUEST' })
   fetch('/api/follow', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ id })
-  }).catch(() => {
-    dispatch({ type: 'FETCH_STATS_ERROR' })
   })
+    .then(response => {
+      dispatch({ type: 'FOLLOW_PLAYER_OK' })
+      dispatch(fetchPlayers())
+    })
+    .catch(() => {
+      dispatch({ type: 'FOLLOW_PLAYER_ERROR' })
+    })
 }

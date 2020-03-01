@@ -26,22 +26,6 @@ const rootReducer = (
         ...state,
         loading: false
       }
-    case 'FETCH_STATS_REQUEST':
-      return {
-        ...state,
-        loading: true
-      }
-    case 'FETCH_STATS_OK':
-      return {
-        ...state,
-        loading: false,
-        following: action.payload.details.concat(state.following)
-      }
-    case 'FETCH_STATS_ERROR':
-      return {
-        ...state,
-        loading: false
-      }
     default:
       return state
   }

@@ -1,5 +1,5 @@
 defmodule Playertracker.Player do
-  alias Playertracker.Repo
+  alias Playertracker.{Accounts, Repo}
   use Ecto.Schema
   import Ecto.Changeset
   
@@ -25,10 +25,10 @@ defmodule Playertracker.Player do
     |> validate_required([:player_id, :first_name, :last_name])
   end
 
-  def all() do
+  def all(current_user) do
     players = Repo.all(Playertracker.Player)
 
-    Enum.reduce(players, [], fn player, acc -> 
+    Enum.reduce(players, [], fn player, acc ->
       trimmed_player = %{
         id: player.player_id,
         firstName: player.first_name,
@@ -37,7 +37,8 @@ defmodule Playertracker.Player do
         position: player.position,
         teamId: player.team_id,
         tricode: player.tricode,
-        teamColor: player.team_color
+        teamColor: player.team_color,
+        followed: Accounts.followed?(current_user, player)
       }
       [trimmed_player | acc]
     end)

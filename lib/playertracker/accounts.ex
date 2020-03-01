@@ -130,4 +130,9 @@ defmodule Playertracker.Accounts do
   #   list = user |> Playertracker.Repo.preload(:following)
   #   list.following
   # end
+
+  def followed?(current_user, player) do
+    player_with_followers = player |> Repo.preload(:followers)
+    Enum.member?(player_with_followers.followers, current_user)
+  end
 end
