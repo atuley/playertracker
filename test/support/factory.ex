@@ -20,7 +20,11 @@ defmodule Playertracker.Factory do
     %Playertracker.Player{
       first_name: "Kobe",
       last_name: "Bryant",
-      player_id: "12345"
+      player_id: "12345",
+      number: "24",
+      position: "G",
+      team_color: "#fff",
+      tricode: "LAL"
     }
   end
 end
