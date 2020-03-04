@@ -6,7 +6,7 @@ import { search } from '../../utils'
 
 class SearchContainer extends Component {
   state = {
-    searchResults: []
+    query: ''
   }
 
   componentDidMount = () => {
@@ -14,11 +14,13 @@ class SearchContainer extends Component {
   }
 
   handlePlayerSearch = e => {
+    this.setState({ query: e.target.value })
+  }
+
+  searchResults = () => {
+    const { query } = this.state
     const { players } = this.props
-    this.setState({
-      ...this.state,
-      searchResults: search(e.target.value, players)
-    })
+    return search(query, players)
   }
 
   render() {
@@ -26,7 +28,7 @@ class SearchContainer extends Component {
       <Search
         {...this.props}
         handlePlayerSearch={this.handlePlayerSearch}
-        searchResults={this.state.searchResults}
+        searchResults={this.searchResults()}
       />
     )
   }
