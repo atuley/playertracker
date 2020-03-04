@@ -5,6 +5,9 @@ defmodule PlayerTrackerWeb.FollowAPlayerTest do
 
   setup do
     user = insert(:user, password: "password")
+    # Need to sign in
+    insert(:player, first_name: "Stephen", last_name: "Curry", player_id: "201939")
+    insert(:player)
 
     {:ok, %{user: user}}
   end

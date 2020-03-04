@@ -1,11 +1,16 @@
 defmodule Playertracker.PlayerTest do
-  use ExUnit.Case, async: false
+  use Playertracker.DataCase
 
   alias Playertracker.Player
 
+  setup do
+    player = insert(:player)
+    {:ok, %{player: player}}
+  end
+
   describe "all/0" do
-    test "should return all franchise NBA players" do
-      players = Player.all()
+    test "should return all franchise NBA players", %{player: player} do
+      players = Player.all("blah")
       first_player = players |> List.first()
 
       assert first_player == %{

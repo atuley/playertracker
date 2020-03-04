@@ -1,5 +1,5 @@
 defmodule Playertracker.FeatureCase do
-  use ExUnit.CaseTemplate #, async: true
+  use ExUnit.CaseTemplate, async: true
 
   using do
     quote do
