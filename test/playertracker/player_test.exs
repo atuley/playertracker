@@ -16,6 +16,7 @@ defmodule Playertracker.PlayerTest do
                firstName: "Kobe",
                id: "1627826",
                lastName: "Bryant",
+               firstLast: "Kobe Bryant",
                number: "24",
                position: "G",
                teamId: "1610612746",
