@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Search from './search'
-import { fetchPlayers } from '../../actions'
+import { fetchPlayers, followPlayer } from '../../actions'
 import { search } from '../../utils'
 
 class SearchContainer extends Component {
   state = {
-    searchResults: []
+    query: ''
   }
 
   componentDidMount = () => {
@@ -14,11 +14,13 @@ class SearchContainer extends Component {
   }
 
   handlePlayerSearch = e => {
+    this.setState({ query: e.target.value })
+  }
+
+  searchResults = () => {
+    const { query } = this.state
     const { players } = this.props
-    this.setState({
-      ...this.state,
-      searchResults: search(e.target.value, players)
-    })
+    return query.length ? search(query, players) : []
   }
 
   render() {
@@ -26,7 +28,7 @@ class SearchContainer extends Component {
       <Search
         {...this.props}
         handlePlayerSearch={this.handlePlayerSearch}
-        searchResults={this.state.searchResults}
+        searchResults={this.searchResults()}
       />
     )
   }
@@ -36,7 +38,7 @@ const mapStateToProps = state => ({
   players: state.rootReducer.players
 })
 
-export default connect(
-  mapStateToProps,
-  { fetchPlayers }
-)(SearchContainer)
+export default connect(mapStateToProps, {
+  fetchPlayers,
+  handleFollowPlayer: followPlayer
+})(SearchContainer)

@@ -35,3 +35,4 @@ npm-debug.log
 
 /config/*.secret.exs
 .cache
+TODO.md

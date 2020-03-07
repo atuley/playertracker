@@ -6,7 +6,7 @@ defmodule Playertracker.Accounts do
   import Ecto.Query, warn: false
   alias Playertracker.Repo
 
-  alias Playertracker.Accounts.User
+  alias Playertracker.Accounts.{Relationship, User}
 
   @doc """
   Returns the list of users.
@@ -113,5 +113,29 @@ defmodule Playertracker.Accounts do
           {:error, _} -> {:error, "Invalid email or password!"}
         end
     end
+  end
+
+  def follow(player, user) do
+    %Relationship{}
+    |> Relationship.changeset(%{follower_id: user.id, followed_id: player.id})
+    |> Repo.insert()
+  end
+
+  def unfollow(player, user) do
+    Repo.get_by!(Relationship, follower_id: user.id, followed_id: player.id)
+    |> Repo.delete()
+  end
+
+  def following(user) do
+    user 
+    |> Playertracker.Repo.preload(:following)
+    |> Map.get(:following)
+  end
+
+  def followed?(current_user, player) do
+    player
+    |> Repo.preload(:followers)
+    |> Map.get(:followers)
+    |> Enum.member?(current_user)
   end
 end

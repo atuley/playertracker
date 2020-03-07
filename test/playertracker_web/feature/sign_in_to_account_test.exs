@@ -12,6 +12,7 @@ defmodule PlayertrackerWeb.SignInToAccountTest do
   test "logging in with valid user credentials", %{user: user} do
     navigate_to("/")
     click({:css, ".qa-sign-in"})
+    :timer.sleep(3000)
     fill_field({:css, ".qa-session-email"}, user.email)
     fill_field({:css, ".qa-session-password"}, "password")
     click({:css, ".qa-session-submit"})
@@ -23,9 +24,11 @@ defmodule PlayertrackerWeb.SignInToAccountTest do
   test "attempting to log in with invalid user credentials", %{user: user} do
     navigate_to("/")
     click({:css, ".qa-sign-in"})
+    :timer.sleep(3000)
     fill_field({:css, ".qa-session-email"}, user.email)
     fill_field({:css, ".qa-session-password"}, "not the right password")
     click({:css, ".qa-session-submit"})
+    :timer.sleep(3000)
 
     refute current_path() == "/"
     assert String.contains?(page_source(), "Invalid email or password!")
@@ -34,9 +37,11 @@ defmodule PlayertrackerWeb.SignInToAccountTest do
   test "can log out", %{user: user} do
     navigate_to("/")
     click({:css, ".qa-sign-in"})
+    :timer.sleep(3000)
     fill_field({:css, ".qa-session-email"}, user.email)
     fill_field({:css, ".qa-session-password"}, "password")
     click({:css, ".qa-session-submit"})
+    :timer.sleep(3000)
 
     assert current_path() == "/"
     click({:css, ".qa-log-out"})

@@ -1,5 +1,50 @@
 defmodule Playertracker.Player do
-  def all() do
+  alias Playertracker.{Accounts, Repo}
+  use Ecto.Schema
+  import Ecto.Changeset
+  
+  schema "players" do
+    field :first_name, :string
+    field :last_name, :string
+    field :player_id, :string
+    field :number, :string
+    field :position, :string
+    field :team_color, :string
+    field :team_id, :string
+    field :tricode, :string
+    has_many(:passive_relationships, Playertracker.Accounts.Relationship, foreign_key: :followed_id)
+    has_many(:followers, through: [:passive_relationships, :follower])
+
+    timestamps()
+  end
+
+  @doc false
+  def changeset(player, attrs) do
+    player
+    |> cast(attrs, [:player_id, :first_name, :last_name])
+    |> validate_required([:player_id, :first_name, :last_name])
+  end
+
+  def all(current_user) do
+    players = Repo.all(Playertracker.Player)
+
+    Enum.reduce(players, [], fn player, acc ->
+      trimmed_player = %{
+        id: player.player_id,
+        firstName: player.first_name,
+        lastName: player.last_name,
+        number: player.number,
+        position: player.position,
+        teamId: player.team_id,
+        tricode: player.tricode,
+        teamColor: player.team_color,
+        followed: Accounts.followed?(current_user, player)
+      }
+      [trimmed_player | acc]
+    end)
+  end
+
+  def all_seed() do
     fetch_all_players()
     |> filter_out_non_franchise_players()
     |> trim_player_payload()

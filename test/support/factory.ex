@@ -15,4 +15,21 @@ defmodule Playertracker.Factory do
     }
     |> set_password
   end
+
+  def player_factory() do
+    %Playertracker.Player{
+      first_name: "Kobe",
+      last_name: "Bryant",
+      player_id: "1627826",
+      number: "24",
+      position: "G",
+      team_color: "#ed174b",
+      team_id: "1610612746",
+      tricode: "LAL"
+    }
+  end
+
+  def relationship_factory() do
+    %Playertracker.Accounts.Relationship{}
+  end
 end
