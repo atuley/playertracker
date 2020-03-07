@@ -20,7 +20,7 @@ const SearchResult = ({ player, followPlayer }) => (
     </td>
     <td className="search-result__follow-btn">
       {player.followed ? (
-        <button className={`primary-btn qa-follow-${player.id}`}>
+        <button className={`primary-btn qa-unfollow-${player.id}`}>
           Unfollow
         </button>
       ) : (

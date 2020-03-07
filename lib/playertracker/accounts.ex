@@ -126,13 +126,16 @@ defmodule Playertracker.Accounts do
     |> Repo.delete()
   end
 
-  # def following(user) do
-  #   list = user |> Playertracker.Repo.preload(:following)
-  #   list.following
-  # end
+  def following(user) do
+    user 
+    |> Playertracker.Repo.preload(:following)
+    |> Map.get(:following)
+  end
 
   def followed?(current_user, player) do
-    player_with_followers = player |> Repo.preload(:followers)
-    Enum.member?(player_with_followers.followers, current_user)
+    player
+    |> Repo.preload(:followers)
+    |> Map.get(:followers)
+    |> Enum.member?(current_user)
   end
 end

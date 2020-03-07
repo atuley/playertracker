@@ -3,25 +3,24 @@ defmodule Playertracker.PlayerTest do
 
   alias Playertracker.Player
 
-  setup do
-    player = insert(:player)
-    {:ok, %{player: player}}
-  end
-
   describe "all/0" do
-    test "should return all franchise NBA players", %{player: player} do
+    test "should return list of NBA players" do
+      insert(:player)
+
       players = Player.all("blah")
       first_player = players |> List.first()
 
+      assert is_list(players) 
       assert first_player == %{
-               firstName: "Ivica",
+               firstName: "Kobe",
                id: "1627826",
-               lastName: "Zubac",
-               number: "40",
-               position: "C",
+               lastName: "Bryant",
+               number: "24",
+               position: "G",
                teamId: "1610612746",
                teamColor: "#ed174b",
-               tricode: "LAC"
+               tricode: "LAL",
+               followed: false
              }
 
       assert players |> length > 0
