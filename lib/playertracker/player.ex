@@ -33,6 +33,7 @@ defmodule Playertracker.Player do
         id: player.player_id,
         firstName: player.first_name,
         lastName: player.last_name,
+        firstLast: "#{player.first_name} #{player.last_name}",
         number: player.number,
         position: player.position,
         teamId: player.team_id,
