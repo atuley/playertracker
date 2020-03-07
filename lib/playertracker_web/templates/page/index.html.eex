@@ -1,1 +1,5 @@
-<div id="root"></div>
+<%= if @current_user do %>
+  <div id="root"></div>
+<% else %>
+  Please <span><%= link "sign in", to: Routes.session_path(@conn, :new), class: "qa-sign-in" %></span> or <span><%= link "sign up", to: Routes.user_path(@conn, :new) %></span> to begin.
+<% end %>
