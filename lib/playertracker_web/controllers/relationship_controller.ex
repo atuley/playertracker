@@ -10,7 +10,7 @@ defmodule PlayertrackerWeb.RelationshipController do
       {:ok, _} -> conn
       |> Plug.Conn.resp(200, "Success")
       |> Plug.Conn.send_resp()
-      {:error, _} -> conn
+      _ -> conn
       |> Plug.Conn.resp(400, "Unable to follow player")
       |> Plug.Conn.send_resp()
     end

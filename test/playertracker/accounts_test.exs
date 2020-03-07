@@ -68,7 +68,6 @@ defmodule Playertracker.AccountsTest do
     end
 
     test "follow/2 with invalid params returns error changeset", %{user: user} do
-      # no results error?
       assert {:error, %Ecto.Changeset{}} = Accounts.follow(%{id: 20}, user)
     end
 
