@@ -127,7 +127,7 @@ defmodule Playertracker.Accounts do
   end
 
   def following(user) do
-    user 
+    user
     |> Playertracker.Repo.preload(:following)
     |> Map.get(:following)
   end

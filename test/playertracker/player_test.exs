@@ -10,7 +10,8 @@ defmodule Playertracker.PlayerTest do
       players = Player.all("blah")
       first_player = players |> List.first()
 
-      assert is_list(players) 
+      assert is_list(players)
+
       assert first_player == %{
                firstName: "Kobe",
                id: "1627826",

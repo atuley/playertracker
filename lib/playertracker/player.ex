@@ -2,7 +2,7 @@ defmodule Playertracker.Player do
   alias Playertracker.{Accounts, Repo}
   use Ecto.Schema
   import Ecto.Changeset
-  
+
   schema "players" do
     field :first_name, :string
     field :last_name, :string
@@ -12,7 +12,11 @@ defmodule Playertracker.Player do
     field :team_color, :string
     field :team_id, :string
     field :tricode, :string
-    has_many(:passive_relationships, Playertracker.Accounts.Relationship, foreign_key: :followed_id)
+
+    has_many(:passive_relationships, Playertracker.Accounts.Relationship,
+      foreign_key: :followed_id
+    )
+
     has_many(:followers, through: [:passive_relationships, :follower])
 
     timestamps()
@@ -41,6 +45,7 @@ defmodule Playertracker.Player do
         teamColor: player.team_color,
         followed: Accounts.followed?(current_user, player)
       }
+
       [trimmed_player | acc]
     end)
   end

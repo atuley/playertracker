@@ -8,7 +8,7 @@ defmodule PlayertrackerWeb.Plugs.CurrentUser do
       conn
     else
       conn
-      |> assign(:current_user, Guardian.Plug.current_resource(conn))  
+      |> assign(:current_user, Guardian.Plug.current_resource(conn))
     end
   end
 end

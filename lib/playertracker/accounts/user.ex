@@ -6,7 +6,9 @@ defmodule Playertracker.Accounts.User do
     field :email, :string
     field :password, :string, virtual: true
     field :password_hash, :string
+
     has_many(:active_relationships, Playertracker.Accounts.Relationship, foreign_key: :follower_id)
+
     has_many(:following, through: [:active_relationships, :followed])
 
     timestamps()
@@ -25,5 +27,6 @@ defmodule Playertracker.Accounts.User do
     changeset
     |> change(Comeonin.Bcrypt.add_hash(password))
   end
+
   defp put_pass_hash(changeset), do: changeset
 end

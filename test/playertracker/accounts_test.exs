@@ -81,7 +81,7 @@ defmodule Playertracker.AccountsTest do
     test "unfollow/2 with invalid raises no results error", %{user: user} do
       assert_raise Ecto.NoResultsError, fn -> Accounts.unfollow(%{id: 20}, user) end
     end
-    
+
     test "following/1 returns list of players user is following" do
       player = insert(:player)
       user = insert(:user)

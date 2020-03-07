@@ -3,7 +3,11 @@ defmodule PlayertrackerWeb.UserControllerTest do
 
   alias Playertracker.Accounts
 
-  @create_attrs %{email: "some email", password: "some password", password_hash: "some password_hash"}
+  @create_attrs %{
+    email: "some email",
+    password: "some password",
+    password_hash: "some password_hash"
+  }
   @invalid_attrs %{email: nil, password: nil, password_hash: nil}
 
   def fixture(:user) do

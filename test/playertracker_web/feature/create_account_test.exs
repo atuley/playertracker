@@ -10,5 +10,4 @@ defmodule PlayerTrackerWeb.CreateAccountTest do
     submit_element({:class, "qa-submit"})
     assert inner_text({:class, "alert-info"}) == "User created successfully."
   end
-
 end

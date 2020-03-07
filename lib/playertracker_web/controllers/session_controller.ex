@@ -31,5 +31,5 @@ defmodule PlayertrackerWeb.SessionController do
     |> put_flash(:info, "Logout successful!")
     |> put_status(302)
     |> redirect(to: "/")
-  end 
+  end
 end

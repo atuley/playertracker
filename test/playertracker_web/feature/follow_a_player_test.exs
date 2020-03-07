@@ -20,7 +20,7 @@ defmodule PlayerTrackerWeb.FollowAPlayerTest do
 
     :timer.sleep(3000)
     fill_field({:class, "qa-search"}, "ste")
-    
+
     click({:css, ".qa-follow-201939"})
     assert inner_text({:class, "qa-unfollow-201939"}) =~ "Unfollow"
   end

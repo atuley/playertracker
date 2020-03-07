@@ -15,7 +15,7 @@ defmodule PlayertrackerWeb.SessionControllerTest do
 
   test "logging in with valid credentials", %{conn: conn, user: user} do
     response = post(conn, "/sessions", %{email: user.email, password: "password"})
-    
+
     assert html_response(response, 302) =~ "/"
   end
 
