@@ -20,7 +20,7 @@ class SearchContainer extends Component {
   searchResults = () => {
     const { query } = this.state
     const { players } = this.props
-    return search(query, players)
+    return query.length ? search(query, players) : []
   }
 
   render() {
