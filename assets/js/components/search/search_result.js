@@ -2,7 +2,7 @@ import React from 'react'
 import { getPlayerImage, hex2rgba } from '../../utils'
 import NameBadge from '../player/name_badge'
 
-const SearchResult = ({ player, followPlayer }) => (
+const SearchResult = ({ player, handleFollowPlayer }) => (
   <tr
     className={`search-result qa-result-${player.id}`}
     style={{
@@ -27,7 +27,7 @@ const SearchResult = ({ player, followPlayer }) => (
         <button
           className={`primary-btn qa-follow-${player.id}`}
           onClick={() => {
-            followPlayer(player.id)
+            handleFollowPlayer(player.id)
           }}
         >
           Follow

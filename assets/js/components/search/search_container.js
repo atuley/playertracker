@@ -38,6 +38,7 @@ const mapStateToProps = state => ({
   players: state.rootReducer.players
 })
 
-export default connect(mapStateToProps, { fetchPlayers, followPlayer })(
-  SearchContainer
-)
+export default connect(mapStateToProps, {
+  fetchPlayers,
+  handleFollowPlayer: followPlayer
+})(SearchContainer)

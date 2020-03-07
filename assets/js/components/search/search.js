@@ -1,7 +1,7 @@
 import React from 'react'
 import SearchResult from './search_result'
 
-const Search = ({ handlePlayerSearch, followPlayer, searchResults }) => {
+const Search = ({ handlePlayerSearch, handleFollowPlayer, searchResults }) => {
   return (
     <div className="search">
       <input
@@ -16,7 +16,7 @@ const Search = ({ handlePlayerSearch, followPlayer, searchResults }) => {
             <SearchResult
               key={player.id}
               player={player}
-              followPlayer={followPlayer}
+              handleFollowPlayer={handleFollowPlayer}
             />
           ))}
         </tbody>
