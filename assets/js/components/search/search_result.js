@@ -2,7 +2,7 @@ import React from 'react'
 import { getPlayerImage, hex2rgba } from '../../utils'
 import NameBadge from '../player/name_badge'
 
-const SearchResult = ({ player, handleFollowPlayer }) => (
+const SearchResult = ({ player, handleFollowPlayer, handleUnfollowPlayer }) => (
   <tr
     className={`search-result qa-result-${player.id}`}
     style={{
@@ -20,7 +20,12 @@ const SearchResult = ({ player, handleFollowPlayer }) => (
     </td>
     <td className="search-result__follow-btn">
       {player.followed ? (
-        <button className={`primary-btn qa-unfollow-${player.id}`}>
+        <button
+          className={`primary-btn--red qa-unfollow-${player.id}`}
+          onClick={() => {
+            handleUnfollowPlayer(player.id)
+          }}
+        >
           Unfollow
         </button>
       ) : (

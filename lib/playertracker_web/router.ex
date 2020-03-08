@@ -36,5 +36,6 @@ defmodule PlayertrackerWeb.Router do
     pipe_through :authenticated
     get "/players", PlayerController, :players
     post "/follow", RelationshipController, :follow
+    post "/unfollow", RelationshipController, :unfollow
   end
 end
