@@ -20,7 +20,8 @@ class FollowingContainer extends Component {
 }
 
 const mapStateToProps = state => ({
-  following: state.rootReducer.following
+  following: state.rootReducer.following,
+  loading: state.rootReducer.loading
 })
 
 export default connect(mapStateToProps, {

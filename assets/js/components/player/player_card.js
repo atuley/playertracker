@@ -2,31 +2,34 @@ import React from 'react'
 import { getPlayerImage, hex2rgba } from '../../utils'
 import NameBadge from './name_badge'
 
-const PlayerCard = ({ player }) => (
-  <div
-    className={`player-card qa-details-${player.id}`}
-    style={{ backgroundColor: hex2rgba(player.teamColor, 0.4) }}
-  >
-    <div className="player-card__image-wrapper">
-      <img className="player-card__image" src={getPlayerImage(player.id)} />
+const PlayerCard = ({ player, loading }) =>
+  loading ? (
+    <div>Loading.. </div>
+  ) : (
+    <div
+      className={`player-card qa-details-${player.id}`}
+      style={{ backgroundColor: hex2rgba(player.teamColor, 0.4) }}
+    >
+      <div className="player-card__image-wrapper">
+        <img className="player-card__image" src={getPlayerImage(player.id)} />
+      </div>
+      <div className="player-card__stats">
+        <NameBadge {...player} />
+        <PrimaryStats
+          points={player.points}
+          assists={player.assists}
+          rebounds={player.rebounds}
+        />
+        <SecondaryStats
+          steals={player.steals}
+          blocks={player.blocks}
+          minutes={player.minutes}
+          teamColor={player.teamColor}
+          turnovers={player.turnovers}
+        />
+      </div>
     </div>
-    <div className="player-card__stats">
-      <NameBadge {...player} />
-      <PrimaryStats
-        points={player.points}
-        assists={player.assists}
-        rebounds={player.rebounds}
-      />
-      <SecondaryStats
-        steals={player.steals}
-        blocks={player.blocks}
-        minutes={player.minutes}
-        teamColor={player.teamColor}
-        turnovers={player.turnovers}
-      />
-    </div>
-  </div>
-)
+  )
 
 const PrimaryStats = ({ points, assists, rebounds }) => (
   <div className="stats">
