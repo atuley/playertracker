@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Search from './search'
-import { fetchPlayers, followPlayer } from '../../actions'
+import { fetchPlayers, followPlayer, unfollowPlayer } from '../../actions'
 import { search } from '../../utils'
 
 class SearchContainer extends Component {
@@ -40,5 +40,6 @@ const mapStateToProps = state => ({
 
 export default connect(mapStateToProps, {
   fetchPlayers,
-  handleFollowPlayer: followPlayer
+  handleFollowPlayer: followPlayer,
+  handleUnfollowPlayer: unfollowPlayer
 })(SearchContainer)
