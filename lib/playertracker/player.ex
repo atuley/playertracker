@@ -121,7 +121,7 @@ defmodule Playertracker.Player do
 
   defp fetch_gamelog(player_id) do
     %{"league" => %{"standard" => recent_games}} =
-      HTTPoison.get!("http://data.nba.net/prod/v1/2018/players/#{player_id}_gamelog.json")
+      HTTPoison.get!("http://data.nba.net/prod/v1/2019/players/#{player_id}_gamelog.json")
       |> Map.get(:body)
       |> Jason.decode!()
 
