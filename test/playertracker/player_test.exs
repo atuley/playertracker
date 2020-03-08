@@ -31,7 +31,8 @@ defmodule Playertracker.PlayerTest do
 
   describe "details/1" do
     test "should return details for players last played game" do
-      details = Player.details(["1627826"])
+      player = insert(:player)
+      details = Player.details([player])
 
       assert List.first(details) == %{
                assists: "0",
