@@ -3,11 +3,12 @@ $primary-grey: #2d2d2d;
 $secondary-grey: #e0e0e0;
 $primary-blue: #3375b1;
 $secondary-blue: #245582;
+$primary-red: #ce4b4b;
 
 /* ELEMENTS */
 body {
   background-color: $primary-grey;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-size: 16px;
 }
 
@@ -146,6 +147,11 @@ table {
   min-width: 75px;
   padding-left: 10px;
   padding-right: 10px;
+
+  &--red {
+    @extend .primary-btn;
+    background-color: $primary-red;
+  }
 }
 
 /* UTILS */

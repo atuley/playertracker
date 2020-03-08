@@ -21,7 +21,7 @@ const SearchResult = ({ player, handleFollowPlayer, handleUnfollowPlayer }) => (
     <td className="search-result__follow-btn">
       {player.followed ? (
         <button
-          className={`primary-btn qa-unfollow-${player.id}`}
+          className={`primary-btn--red qa-unfollow-${player.id}`}
           onClick={() => {
             handleUnfollowPlayer(player.id)
           }}
