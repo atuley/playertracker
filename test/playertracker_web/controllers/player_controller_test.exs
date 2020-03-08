@@ -6,15 +6,15 @@ defmodule PlayertrackerWeb.PlayerControllerTest do
     assert json_response(conn, 200)
   end
 
-  test "POST /api/stats", %{conn: conn} do
+  test "GET /api/stats" do
     player = insert(:player)
     user = insert(:user)
     insert(:relationship, follower_id: user.id, followed_id: player.id)
 
-    conn =
-      Phoenix.ConnTest.build_conn()
-      |> assign(:current_user, user)
-      |> get("/api/stats")
+
+    conn = Phoenix.ConnTest.build_conn()
+    |> assign(:current_user, user)
+    |> get("/api/stats")
 
     assert json_response(conn, 200)
   end

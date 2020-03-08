@@ -1,6 +1,7 @@
 import React from 'react'
 import { getPlayerImage, hex2rgba } from '../../utils'
 import NameBadge from './name_badge'
+import FollowButton from '../following/follow_button'
 
 const PlayerCard = ({ player, loading }) =>
   loading ? (
@@ -28,6 +29,7 @@ const PlayerCard = ({ player, loading }) =>
           turnovers={player.turnovers}
         />
       </div>
+      <FollowButton player={player} />
     </div>
   )
 

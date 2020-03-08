@@ -56,7 +56,7 @@ defmodule Playertracker.Player do
     |> trim_player_payload()
   end
 
-  def details(players) do
+  def details(current_user, players) do
     team_info = fetch_team_info()
 
     Enum.reduce(players, [], fn following, acc ->
@@ -84,7 +84,8 @@ defmodule Playertracker.Player do
         turnovers: player["turnovers"],
         minutes: player["min"],
         tricode: player_team_info["tricode"],
-        teamColor: player_team_info["primaryColor"]
+        teamColor: player_team_info["primaryColor"],
+        followed: Accounts.followed?(current_user, following)
       }
 
       [trimmed_stats | acc]

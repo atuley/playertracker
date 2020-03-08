@@ -9,6 +9,6 @@ defmodule PlayertrackerWeb.PlayerController do
   def stats(conn, _params) do
     current_user = conn.assigns.current_user
     following = Accounts.following(current_user)
-    render(conn, "stats.json", %{data: Player.details(following)})
+    render(conn, "stats.json", %{data: Player.details(current_user, following)})
   end
 end

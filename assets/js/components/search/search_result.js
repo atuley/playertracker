@@ -1,6 +1,7 @@
 import React from 'react'
 import { getPlayerImage, hex2rgba } from '../../utils'
 import NameBadge from '../player/name_badge'
+import FollowButton from '../following/follow_button'
 
 const SearchResult = ({ player, handleFollowPlayer, handleUnfollowPlayer }) => (
   <tr
@@ -19,25 +20,7 @@ const SearchResult = ({ player, handleFollowPlayer, handleUnfollowPlayer }) => (
       <NameBadge {...player} />
     </td>
     <td className="search-result__follow-btn">
-      {player.followed ? (
-        <button
-          className={`primary-btn--red qa-unfollow-${player.id}`}
-          onClick={() => {
-            handleUnfollowPlayer(player.id)
-          }}
-        >
-          Unfollow
-        </button>
-      ) : (
-        <button
-          className={`primary-btn qa-follow-${player.id}`}
-          onClick={() => {
-            handleFollowPlayer(player.id)
-          }}
-        >
-          Follow
-        </button>
-      )}
+      <FollowButton player={player} />
     </td>
   </tr>
 )
