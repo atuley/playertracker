@@ -56,15 +56,16 @@ defmodule Playertracker.Player do
     |> trim_player_payload()
   end
 
-  def details(ids) do
+  def details(current_user, players) do
     team_info = fetch_team_info()
 
-    Enum.reduce(ids, [], fn id, acc ->
+    Enum.reduce(players, [], fn following, acc ->
       player =
-        id
+      following
+        |> Map.get(:player_id)
         |> last_played_game()
         |> fetch_boxscore()
-        |> find_stats(id)
+        |> find_stats(following.player_id)
 
       player_team_info = find_team_info(team_info, player["teamId"])
 
@@ -83,7 +84,8 @@ defmodule Playertracker.Player do
         turnovers: player["turnovers"],
         minutes: player["min"],
         tricode: player_team_info["tricode"],
-        teamColor: player_team_info["primaryColor"]
+        teamColor: player_team_info["primaryColor"],
+        followed: Accounts.followed?(current_user, following)
       }
 
       [trimmed_stats | acc]
