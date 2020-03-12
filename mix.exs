@@ -48,7 +48,8 @@ defmodule Playertracker.MixProject do
       {:bcrypt_elixir, "~> 1.1.1"},
       {:comeonin, "~> 4.1"},
       {:guardian, "~> 2.0"},
-      {:httpoison, "~> 1.5"}
+      {:httpoison, "~> 1.5"},
+      {:nba_ex, "~> 1.0.0-beta.1"}
     ]
   end
 
