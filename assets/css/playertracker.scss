@@ -10,6 +10,7 @@ body {
   background-color: $primary-grey;
   font-family: 'Roboto', sans-serif;
   font-size: 16px;
+  margin: 0;
 }
 
 input {
@@ -29,6 +30,8 @@ table {
 .search {
   margin: auto;
   max-width: 1000px;
+  padding-left: 15px;
+  padding-right: 15px;
 
   &__field {
     border-radius: 10px;
@@ -62,12 +65,8 @@ table {
     padding: 10px;
   }
 
-  &__follow-btn {
-    align-items: center;
-    display: flex;
-    height: 50px;
-    justify-content: flex-end;
-    min-height: 50px;
+  td button {
+    float: right;
   }
 
   &__player-image-wrapper {
@@ -94,16 +93,18 @@ table {
 .player-card {
   border-radius: 10px;
   box-sizing: initial;
+  display: flex;
+  flex-direction: column;
   margin: 10px auto auto auto;
-  padding: 10px;
+  padding: 16px;
 
   &__image-wrapper {
-    display: inline-block;
+    align-self: center;
   }
 
   &__image {
     border-radius: 50%;
-    height: 100px;
+    height: 75px;
   }
   &__stats {
     color: white;
@@ -117,7 +118,7 @@ table {
     margin-left: 2px;
   }
   &__primary {
-    font-size: 3em;
+    font-size: 2.5em;
     font-weight: 400;
     margin-left: 8px;
   }
@@ -133,6 +134,7 @@ table {
 }
 
 .name-badge {
+  color: white;
   display: flex;
 }
 
@@ -174,6 +176,10 @@ table {
 
 .u-ml-8 {
   margin-left: 8px;
+}
+
+.u-mb-16 {
+  margin-bottom: 16px;
 }
 
 .u-display-results {

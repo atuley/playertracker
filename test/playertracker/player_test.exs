@@ -36,23 +36,23 @@ defmodule Playertracker.PlayerTest do
       details = Player.details(user, [player])
 
       assert List.first(details) == %{
-               assists: "1",
-               blocks: "1",
-               firstName: "Ivica",
-               id: "1627826",
-               lastName: "Zubac",
-               minutes: "13:50",
-               number: "40",
-               points: "5",
-               position: "C",
-               rebounds: "7",
-               steals: "0",
-               teamId: "1610612746",
-               turnovers: "0",
-               teamColor: "#ed174b",
-               tricode: "LAC",
-               followed: false
-             }
+        assists: "0",
+        blocks: "1",
+        firstName: "Ivica",
+        followed: false,
+        id: "1627826",
+        lastName: "Zubac",
+        minutes: "10:42",
+        number: "40",
+        points: "6",
+        position: "C",
+        rebounds: "4",
+        steals: "0",
+        teamColor: "#ed174b",
+        teamId: "1610612746",
+        tricode: "LAC",
+        turnovers: "1"
+      }
     end
   end
 end

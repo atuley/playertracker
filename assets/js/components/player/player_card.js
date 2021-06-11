@@ -11,11 +11,13 @@ const PlayerCard = ({ player, loading }) =>
       className={`player-card qa-details-${player.id}`}
       style={{ backgroundColor: hex2rgba(player.teamColor, 0.4) }}
     >
-      <div className="player-card__image-wrapper">
-        <img className="player-card__image" src={getPlayerImage(player.id)} />
-      </div>
-      <div className="player-card__stats">
+      <div className="u-flex">
+        <div className="player-card__image-wrapper">
+          <img className="player-card__image" src={getPlayerImage(player.id)} />
+        </div>
         <NameBadge {...player} />
+      </div>
+      <div className="player-card__stats u-mb-16">
         <PrimaryStats {...player} />
         <SecondaryStats {...player} />
       </div>

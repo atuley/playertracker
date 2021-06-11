@@ -3,7 +3,7 @@ import { getPlayerImage, hex2rgba } from '../../utils'
 import NameBadge from '../player/name_badge'
 import FollowButton from '../following/follow_button'
 
-const SearchResult = ({ player, handleFollowPlayer, handleUnfollowPlayer }) => (
+const SearchResult = ({ player }) => (
   <tr
     className={`search-result qa-result-${player.id}`}
     style={{

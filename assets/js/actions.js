@@ -34,6 +34,8 @@ export const followPlayer = id => dispatch => {
     .then(() => {
       dispatch({ type: 'FOLLOW_PLAYER_OK' })
       dispatch(fetchPlayers())
+    })
+    .then(() => {
       dispatch(fetchStats())
     })
     .catch(() => dispatch({ type: 'FOLLOW_PLAYER_ERROR' }))

@@ -3,8 +3,6 @@ import SearchResult from './search_result'
 
 const Search = ({
   handlePlayerSearch,
-  handleFollowPlayer,
-  handleUnfollowPlayer,
   searchResults
 }) => {
   return (
@@ -21,8 +19,6 @@ const Search = ({
             <SearchResult
               key={player.id}
               player={player}
-              handleFollowPlayer={handleFollowPlayer}
-              handleUnfollowPlayer={handleUnfollowPlayer}
             />
           ))}
         </tbody>

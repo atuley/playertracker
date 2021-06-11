@@ -39,7 +39,5 @@ const mapStateToProps = state => ({
 })
 
 export default connect(mapStateToProps, {
-  fetchPlayers,
-  handleFollowPlayer: followPlayer,
-  handleUnfollowPlayer: unfollowPlayer
+  fetchPlayers
 })(SearchContainer)
