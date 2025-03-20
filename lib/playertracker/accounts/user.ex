@@ -25,7 +25,7 @@ defmodule Playertracker.Accounts.User do
 
   defp put_pass_hash(%Ecto.Changeset{valid?: true, changes: %{password: password}} = changeset) do
     changeset
-    |> change(Comeonin.Bcrypt.add_hash(password))
+    |> change(%{password_hash: Bcrypt.hash_pwd_salt(password)})
   end
 
   defp put_pass_hash(changeset), do: changeset

@@ -18,7 +18,7 @@ defmodule PlayertrackerWeb.RelationshipController do
         |> Plug.Conn.send_resp()
     end
   end
-  
+
   def unfollow(conn, %{"id" => id}) do
     player = Repo.get_by!(Player, player_id: id)
     current_user = conn.assigns.current_user

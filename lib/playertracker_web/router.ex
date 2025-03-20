@@ -22,7 +22,7 @@ defmodule PlayertrackerWeb.Router do
 
   scope "/", PlayertrackerWeb do
     pipe_through :browser
-    pipe_through :authenticated
+    # pipe_through :authenticated
 
     get "/sessions/new", SessionController, :new
     post "/sessions", SessionController, :create

@@ -11,14 +11,12 @@ defmodule PlayertrackerWeb.Gettext do
       gettext("Here is the string to translate")
 
       # Plural translation
-      ngettext("Here is the string to translate",
-               "Here are the strings to translate",
-               3)
+      ngettext("One msg", "%{count} msgs", count)
 
       # Domain-based translation
-      dgettext("errors", "Here is the error message to translate")
+      dgettext("errors", "Invalid credentials")
 
   See the [Gettext Docs](https://hexdocs.pm/gettext) for detailed usage.
   """
-  use Gettext, otp_app: :playertracker
+  use Gettext.Backend, otp_app: :playertracker
 end

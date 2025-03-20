@@ -5,9 +5,9 @@ defmodule Playertracker.MixProject do
     [
       app: :playertracker,
       version: "0.1.0",
-      elixir: "~> 1.5",
+      elixir: "~> 1.14",
       elixirc_paths: elixirc_paths(Mix.env()),
-      compilers: [:phoenix, :gettext] ++ Mix.compilers(),
+      compilers: Mix.compilers(),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
       deps: deps()
@@ -33,23 +33,24 @@ defmodule Playertracker.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
-      {:phoenix, "~> 1.4.7"},
-      {:phoenix_pubsub, "~> 1.1"},
-      {:phoenix_ecto, "~> 4.0"},
-      {:ecto_sql, "~> 3.0"},
+      {:phoenix, "~> 1.6.15"},
+      {:phoenix_pubsub, "~> 2.0"},
+      {:phoenix_ecto, "~> 4.4"},
+      {:ecto_sql, "~> 3.10"},
       {:postgrex, ">= 0.0.0"},
-      {:phoenix_html, "~> 2.11"},
+      {:phoenix_html, "~> 3.2"},
       {:phoenix_live_reload, "~> 1.2", only: :dev},
-      {:gettext, "~> 0.11"},
-      {:jason, "~> 1.0"},
-      {:plug_cowboy, "~> 2.0"},
+      {:phoenix_live_view, "~> 0.17.10"},
+      {:gettext, "~> 0.18"},
+      {:jason, "~> 1.2"},
+      {:plug_cowboy, "~> 2.5"},
       {:hound, "~> 1.0"},
-      {:ex_machina, "~> 2.3"},
-      {:bcrypt_elixir, "~> 1.1.1"},
-      {:comeonin, "~> 4.1"},
-      {:guardian, "~> 2.0"},
-      {:httpoison, "~> 1.5"},
-      {:nba_ex, "~> 1.0.0-beta.1"}
+      {:ex_machina, "~> 2.7"},
+      {:bcrypt_elixir, "~> 2.3"},
+      {:guardian, "~> 2.3"},
+      {:httpoison, "~> 1.0"},
+      {:nba_ex, "~> 1.0.0-beta.1"},
+      {:esbuild, "~> 0.7", runtime: Mix.env() == :dev}
     ]
   end
 

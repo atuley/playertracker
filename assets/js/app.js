@@ -9,7 +9,7 @@ import css from '../css/app.scss'
 //
 // Import dependencies
 //
-import 'phoenix_html'
+import "phoenix_html"
 
 // Import local files
 //
@@ -18,7 +18,7 @@ import 'phoenix_html'
 import React from 'react'
 import { render } from 'react-dom'
 import { Provider } from 'react-redux'
-import thunk from 'redux-thunk'
+import { thunk } from 'redux-thunk'
 import rootReducer from './root_reducer'
 import { createStore, applyMiddleware, compose } from 'redux'
 import SearchContainer from './components/search/search_container'

@@ -108,9 +108,10 @@ defmodule Playertracker.Accounts do
         {:error, "Invalid email or password!"}
 
       user ->
-        case Comeonin.Bcrypt.check_pass(user, password) do
-          {:ok, user} -> {:ok, user}
-          {:error, _} -> {:error, "Invalid email or password!"}
+        if Bcrypt.verify_pass(password, user.password_hash) do
+          {:ok, user}
+        else
+          {:error, "Invalid email or password!"}
         end
     end
   end
