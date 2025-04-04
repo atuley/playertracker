@@ -82,24 +82,6 @@ defmodule PlayertrackerWeb.PlayerController do
         tricode: "GSW",
         teamColor: "#1D428A",
         followed: true
-      },
-      %{
-        id: "201142",  # Kevin Durant
-        firstName: "Kevin",
-        lastName: "Durant",
-        number: "35",
-        position: "SF",
-        teamId: "1610612756",  # Suns
-        points: 31,
-        assists: 5,
-        rebounds: 7,
-        steals: 1,
-        blocks: 2,
-        turnovers: 2,
-        minutes: "37:15",
-        tricode: "PHX",
-        teamColor: "#1D1160",
-        followed: false
       }
     ]
 
