@@ -1,4 +1,6 @@
 # Playertracker
+This app is outdated and may be hard to run on your machine so I've recorded a demo video. Click the thumbnail below
+[![Watch the video](https://img.youtube.com/vi/R1m9zDjU580/maxresdefault.jpg)](https://www.youtube.com/watch?v=R1m9zDjU580)
 
 To start your Phoenix server:
 
